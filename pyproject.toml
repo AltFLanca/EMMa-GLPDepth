@@ -1,0 +1,39 @@
+[project]
+name = "emma-glpdepth"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10.19"
+dependencies = [
+    "torch>=2.11.0",
+    "mmcv<2",
+    "opencv-python==4.5.5.64",
+    "torchvision>=0.26.0",
+    "timm>=1.0.26",
+    "openexr>=3.4.9",
+    "h5py>=3.16.0",
+    "hdf5plugin>=6.0.0",
+    "emma-wrapper>=0.1.14",
+    "matplotlib>=3.10.9",
+    "open3d>=0.20.0",
+]
+
+[tool.uv]
+build-constraint-dependencies = ["setuptools<82"]
+
+[tool.uv.sources]
+emma-wrapper = { git = "https://github.com/AltFLanca/EMMa-Wrapper.git", rev = "c1d9a8cd6b09edb97325e8dd845c5100d7ffacca" }
+torch = [{ index = "pytorch-cu126", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
+torchvision = [{ index = "pytorch-cu126", marker = "sys_platform == 'linux' or sys_platform == 'win32'" }]
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "ipympl>=0.10.0",
+    "scipy>=1.15.3",
+]
